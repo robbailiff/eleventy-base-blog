@@ -1,10 +1,10 @@
 ---
 layout: layouts/post.njk
-title: My Profile
+title: About Me
 templateClass: tmpl-post
 eleventyNavigation:
-  key: Profile
+  key: About Me
   order: 3
 ---
 
-Here is a collection of my work.
+I am a person that writes stuff.
