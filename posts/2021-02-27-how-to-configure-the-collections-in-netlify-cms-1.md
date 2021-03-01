@@ -44,7 +44,7 @@ The `create` option is a boolean value which determines whether a new item in th
 The `slug` option specifies a template for generating new filenames of the collection document type. A slug is a human readable, unique identifier and in the example below it specifies a template for generating new filenames based on a file's creation date and title field.
 
 
-{% raw %}slug: "{{year}}-{{month}}-{{day}}-{{slug}}"{% endraw %}
+{% raw %}```slug: "{{year}}-{{month}}-{{day}}-{{slug}}"```{% endraw %}
 
 
 The first 3 template tags are for the date and the last tag {% raw %}{{slug}}{% endraw %} is a url-safe version of the title field for the file. If the title of the post was "My new post" and it was posted on 21st February 2021, the `slug` option would output `2021-02-25-my-new-post.md` as the name of the new document.
