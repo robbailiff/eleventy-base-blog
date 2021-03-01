@@ -59,7 +59,7 @@ Like the `collections` options, the `name` option is the field identifier, and t
 
 The `widget` option determines the data type of the attribute field and the corresponding editor UI. Most of the data types are fairly self explanatory but there are a lot of options. The one that is perhaps less obvious is for the layout field. 
 
-`{label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk"}`
+```{label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk"}```
 
 The widget option of `hidden`, hides it from view meaning it cannot be changed in the editor UI. The `default` option sets the default value of the field as the path to the template for the document, in this example `layouts/post.njk`. There are numerous options for fields and if you want to know more check out the widgets section of the Netlify CMS documentation [here](https://www.netlifycms.org/docs/widgets).
 
