@@ -8,11 +8,11 @@ tags: Tutorial
 ---
 ## Introduction
 
-Using the Netlify CMS for the first time was very confusing. I didn't really know what I was doing and I basically just copied the code from the setup tutorial and hoped it work. In particular, I had no idea what it was actually doing or how to change the template in the CMS to match the pre-existing posts format. I think I finally got to the bottom of it after a bit of playing around and reading the Netlify CMS documentation [here](https://www.netlifycms.org/docs/configuration-options).
+Using the Netlify CMS for the first time was very confusing. I didn't really know what I was doing and I just copied the code from the setup tutorial and hoped it work. In particular, I had no idea what was going on behind the scenes or how to change the template in the CMS user interface (UI) to match the pre-existing posts format. I finally got to the bottom of it after a bit of playing around and reading the Netlify CMS documentation [here](https://www.netlifycms.org/docs/configuration-options).
 
 ## Collections
 
-The content displayed in the CMS is defined in the `collections` field of the `config.yml` file. These collections are then displayed in the left sidebar of the Content page of the editor UI. This is what the `collections` setting in my `config.yml` looks like:
+The content displayed in the CMS editor UI is defined in the `collections` field of the `config.yml` file and these collections are then displayed in the left sidebar of the Content page of the editor UI. This is what the `collections` setting in my `config.yml` looks like:
 
 ```
 collections:
@@ -64,4 +64,4 @@ There are numerous options for fields and if you want to know more check out the
 
 The `required` option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.
 
-It is worth noting that order of the fields in your Netlify CMS `config.yml` file determines their order in the editor UI.
+**Important!** It is worth noting that order of the fields in your Netlify CMS `config.yml` file determines their order in the editor UI.
