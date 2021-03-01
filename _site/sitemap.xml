@@ -52,6 +52,16 @@
   </url>
   
   <url>
+    <loc>https://example.com/tags/comments/</loc>
+    <lastmod>2021-02-16</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/Tutorial/</loc>
+    <lastmod>2021-02-16</lastmod>
+  </url>
+  
+  <url>
     <loc>https://example.com/tags/second-tag/</loc>
     <lastmod>2021-02-16</lastmod>
   </url>
@@ -69,5 +79,50 @@
   <url>
     <loc>https://example.com/contact/</loc>
     <lastmod>2021-02-23</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/2021-02-25-this-is-my-new-post-from-the-netlify-cms/</loc>
+    <lastmod>2021-02-25</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/2021-02-25-this-is-my-new-post-from-netlify-cms/</loc>
+    <lastmod>2021-02-25</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/2021-02-27-has-the-problem-been-fixed-well-see/</loc>
+    <lastmod>2021-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/2021-02-27-how-to-configure-the-collections-in-netlify-cms-1/</loc>
+    <lastmod>2021-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/comments/</loc>
+    <lastmod>2021-03-01</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/comments/first-comment/</loc>
+    <lastmod>2021-03-01</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/comments/third-comment/</loc>
+    <lastmod>2021-03-01</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/comments/fourth-comment/</loc>
+    <lastmod>2021-03-01</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/comments/second-comment/</loc>
+    <lastmod>2021-03-01</lastmod>
   </url>
 </urlset>

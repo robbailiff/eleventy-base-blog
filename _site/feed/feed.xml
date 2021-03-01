@@ -5,12 +5,87 @@
 	
 	<link href="https://example.com/feed/feed.xml" rel="self"/>
 	<link href="https://example.com/"/>
-	<updated>2021-02-16T00:00:00Z</updated>
+	<updated>2021-02-27T20:28:50Z</updated>
 	<id>https://example.com/</id>
 	<author>
 		<name>Your Name Here</name>
 		<email>youremailaddress@example.com</email>
 	</author>
+	
+	<entry>
+		<title>How to configure the collections in Netlify CMS</title>
+		<link href="https://example.com/posts/2021-02-27-how-to-configure-the-collections-in-netlify-cms-1/"/>
+		<updated>2021-02-27T20:28:50Z</updated>
+		<id>https://example.com/posts/2021-02-27-how-to-configure-the-collections-in-netlify-cms-1/</id>
+		<content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/2021-02-27-how-to-configure-the-collections-in-netlify-cms-1/#introduction&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Using the Netlify CMS for the first time was very confusing. I didn&#39;t really know what I was doing and I just copied the code from the setup tutorial and hoped it work. In particular, I had no idea what was going on behind the scenes or how to change the template in the CMS user interface (UI) to match the pre-existing posts format. I finally got to the bottom of it after a bit of playing around and reading the Netlify CMS documentation &lt;a href=&quot;https://www.netlifycms.org/docs/configuration-options&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;collections&quot;&gt;Collections &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/2021-02-27-how-to-configure-the-collections-in-netlify-cms-1/#collections&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The content displayed in the CMS editor UI is defined in the &lt;code&gt;collections&lt;/code&gt; field of the &lt;code&gt;config.yml&lt;/code&gt; file and these collections are then displayed in the left sidebar of the Content page of the editor UI. This is what the &lt;code&gt;collections&lt;/code&gt; setting in my &lt;code&gt;config.yml&lt;/code&gt; looks like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;collections:
+    name: &amp;quot;posts&amp;quot; 
+    label: &amp;quot;Posts&amp;quot; 
+    folder: &amp;quot;posts/&amp;quot; 
+    create: true 
+    slug: &amp;quot;---&amp;quot;
+    preview_path: &amp;quot;posts/&amp;quot; 
+    fields: # The fields for each document, usually in front matter`
+        - {label: &amp;quot;Layout&amp;quot;, name: &amp;quot;layout&amp;quot;, widget: &amp;quot;hidden&amp;quot;, default: &amp;quot;layouts/post.njk&amp;quot;}
+        - {label: &amp;quot;Title&amp;quot;, name: &amp;quot;title&amp;quot;, widget: &amp;quot;string&amp;quot;}
+        - {label: &amp;quot;Description&amp;quot;, name: &amp;quot;description&amp;quot;, widget: &amp;quot;string&amp;quot;}
+        - {label: &amp;quot;Publish Date&amp;quot;, name: &amp;quot;date&amp;quot;, widget: &amp;quot;datetime&amp;quot;}
+        - {label: &amp;quot;Tags&amp;quot;, name: &amp;quot;tags&amp;quot;, widget: &amp;quot;string&amp;quot;}
+        - {label: &amp;quot;Body&amp;quot;, name: &amp;quot;body&amp;quot;, widget: &amp;quot;markdown&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first collections option is &lt;code&gt;name&lt;/code&gt;, which acts as the collection identifier and is used when referenced, such as the collection URL. So in this case the name is posts and the URL of this collections in the Netlify CMS is &lt;code&gt;admin/collections/posts&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Next is &lt;code&gt;label&lt;/code&gt;, which is simply the name for the collection in admin user interface as shown below. If no value is given it defaults to the &lt;code&gt;name&lt;/code&gt; value.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/posts/collection-ui-md.png&quot; alt=&quot;Picture of the Netlify CMS editor UI&quot; title=&quot;The Netlify CMS Editor User Interface&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;folder&lt;/code&gt; option specifies the location of the collection items within the site structure relative to the root.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;create&lt;/code&gt; option is a boolean value which determines whether a new item in this collection can be created. It is set to false by default.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;slug&lt;/code&gt; option specifies a template for generating new filenames of the collection document type. A slug is a human readable, unique identifier and in the example below it specifies a template for generating new filenames based on a file&#39;s creation date and title field.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;slug: &amp;quot;{{year}}-{{month}}-{{day}}-{{slug}}&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The first 3 template tags are for the date and the last tag &lt;code&gt;{{slug}}&lt;/code&gt; is a url-safe version of the title field for the file. If the title of the post was &amp;quot;My new post&amp;quot; and it was posted on 21st February 2021, the &lt;code&gt;slug&lt;/code&gt; option would output &lt;code&gt;2021-02-25-my-new-post.md&lt;/code&gt; as the name of the new document.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;preview_path&lt;/code&gt; option is a string denoting where the collection documents are found on the deployed site to allow a preview of the document. If it is not set, the &amp;quot;View Preview&amp;quot; button in the editor UI will take you to the root of the site. In this example &lt;code&gt;posts/{{slug}}&lt;/code&gt; is the folder location of the collection, followed by the &lt;code&gt;{{slug}}&lt;/code&gt; tag. In this case, the &lt;code&gt;{{slug}}&lt;/code&gt; is the &lt;strong&gt;entire&lt;/strong&gt; slug for the current entry defined in the &lt;code&gt;slug&lt;/code&gt; option above, and not just the url-safe identifier.&lt;/p&gt;
+&lt;h2 id=&quot;fields&quot;&gt;Fields &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/2021-02-27-how-to-configure-the-collections-in-netlify-cms-1/#fields&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;fields&lt;/code&gt; option allows the definition of attribute fields that each correspond to a widget in the editor UI. Each of these attribute fields is nested in the fields option and placed within curly braces. In a nutshell, the &lt;code&gt;fields&lt;/code&gt; option allows the user to build a template, and the field attributes in the &lt;code&gt;fields&lt;/code&gt; option should be the same as the attributes in the front matter of the corresponding document type. Below is an image which shows the &lt;code&gt;config.yml&lt;/code&gt; for the editor UI on the left, and a markdown file (a blog post) on the right.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/posts/vs-code-md.png&quot; alt=&quot;Comparison of config and posts templates&quot; title=&quot;Comparison of config and posts templates&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Like the &lt;code&gt;collections&lt;/code&gt; options, the &lt;code&gt;name&lt;/code&gt; option is the field identifier, and the &lt;code&gt;label&lt;/code&gt; option is the name for the field in the editor UI.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;widget&lt;/code&gt; option determines the data type of the attribute field and the corresponding editor UI. Most of the data types are fairly self explanatory but there are a lot of options. The one that is perhaps less obvious is for the layout field.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;{label: &amp;quot;Layout&amp;quot;, name: &amp;quot;layout&amp;quot;, widget: &amp;quot;hidden&amp;quot;, default: &amp;quot;layouts/post.njk&amp;quot;}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The widget option of &lt;code&gt;hidden&lt;/code&gt;, hides it from view meaning it cannot be changed in the editor UI. The &lt;code&gt;default&lt;/code&gt; option sets the default value of the field as the path to the template for the document, in this example &lt;code&gt;layouts/post.njk&lt;/code&gt;. There are numerous options for fields and if you want to know more check out the widgets section of the Netlify CMS documentation &lt;a href=&quot;https://www.netlifycms.org/docs/widgets&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;required&lt;/code&gt; option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.&lt;/p&gt;
+&lt;p&gt;Body is a special field that needs to be included in documents that contain front matter. It must have &lt;code&gt;name:&amp;quot;body&amp;quot;&lt;/code&gt; and represents the section of the document that contains the main content or body, similar to a HTML &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt; tag.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Important!&lt;/strong&gt; It is worth noting that order of the fields in your Netlify CMS &lt;code&gt;config.yml&lt;/code&gt; file determines their order in the editor UI.&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/2021-02-27-how-to-configure-the-collections-in-netlify-cms-1/#conclusion&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I found going through the code, reading the docs and trying to understand what I had done a really useful exercise, and hopefully this can be useful to someone else too. You view my GitHub repository for the project &lt;a href=&quot;https://github.com/robbailiff/eleventy-base-blog&quot;&gt;here&lt;/a&gt;, and the Netlify CMS documentation &lt;a href=&quot;https://www.netlifycms.org/docs/configuration-options&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;br /&gt;</content>
+	</entry>
+	
+	<entry>
+		<title>Has the problem been fixed? We&#39;ll see!</title>
+		<link href="https://example.com/posts/2021-02-27-has-the-problem-been-fixed-well-see/"/>
+		<updated>2021-02-27T12:49:24Z</updated>
+		<id>https://example.com/posts/2021-02-27-has-the-problem-been-fixed-well-see/</id>
+		<content type="html">&lt;p&gt;Here is some new text. Blah blah blah!&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>This is my new post from Netlify CMS</title>
+		<link href="https://example.com/posts/2021-02-25-this-is-my-new-post-from-netlify-cms/"/>
+		<updated>2021-02-25T20:14:45Z</updated>
+		<id>https://example.com/posts/2021-02-25-this-is-my-new-post-from-netlify-cms/</id>
+		<content type="html">&lt;p&gt;Yay! I managed to get this to work!&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>This is my new post from the Netlify CMS</title>
+		<link href="https://example.com/posts/2021-02-25-this-is-my-new-post-from-the-netlify-cms/"/>
+		<updated>2021-02-25T20:11:16Z</updated>
+		<id>https://example.com/posts/2021-02-25-this-is-my-new-post-from-the-netlify-cms/</id>
+		<content type="html">&lt;p&gt;Yay! I managed to get this working!&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>This is my fifth post.</title>

@@ -25,7 +25,8 @@ p:last-child {
 p,
 .tmpl-post li,
 img {
-  max-width: 37.5em; /* 600px /16 */
+  /* max-width: 37.5em; 600px /16 */
+  max-width: 1000px;
 }
 p,
 .tmpl-post li {
@@ -82,7 +83,6 @@ pre {
   padding: 1em;
   margin: .5em 0;
   background-color: #f6f6f6;
-  max-width: 1000px;
 }
 .highlight-line {
   display: block;

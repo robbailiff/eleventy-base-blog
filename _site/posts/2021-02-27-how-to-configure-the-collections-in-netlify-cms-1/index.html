@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to configure the collections in Netlify CMS</title>
+    <meta name="description" content="A brief overview of how collections work and how to fix it for the Eleventy blog template">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Rob&#39;s Blog">
+    <link rel="alternate" href="/feed/feed.json" type="application/json" title="Rob&#39;s Blog">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <header class="container">
+      <img class="home" src="https://www.pngkey.com/png/detail/142-1423196_free-logo-maker-camera-eye-logo-png.png" alt="Logo" height="30">
+      <h1 class="home pt-1"><a href="/">Rob&#39;s Blog</a></h1>
+      <ul class="nav pt-3">
+        <li class="nav-item"><a href="/">Home</a></li>
+        <li class="nav-item"><a href="/posts/">Archive</a></li>
+        <li class="nav-item"><a href="/about/">Profile</a></li>
+        <li class="nav-item"><a href="/contact/">Contact</a></li>
+        <li class="nav-item"><a href="/comments/">Comments</a></li>
+      </ul>
+    </header>
+
+    <section class="container">
+      <img src="https://images.unsplash.com/photo-1498588543704-e0d466ddcfe5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Icy beach with black sand">
+    </section>
+
+    <main  class="tmpl-post container">
+
+      <h1>How to configure the collections in Netlify CMS</h1>
+
+<h2 id="introduction">Introduction <a class="direct-link" href="#introduction">#</a></h2>
+<p>Using the Netlify CMS for the first time was very confusing. I didn't really know what I was doing and I just copied the code from the setup tutorial and hoped it work. In particular, I had no idea what was going on behind the scenes or how to change the template in the CMS user interface (UI) to match the pre-existing posts format. I finally got to the bottom of it after a bit of playing around and reading the Netlify CMS documentation <a href="https://www.netlifycms.org/docs/configuration-options">here</a>.</p>
+<h2 id="collections">Collections <a class="direct-link" href="#collections">#</a></h2>
+<p>The content displayed in the CMS editor UI is defined in the <code>collections</code> field of the <code>config.yml</code> file and these collections are then displayed in the left sidebar of the Content page of the editor UI. This is what the <code>collections</code> setting in my <code>config.yml</code> looks like:</p>
+<pre><code>collections:
+    name: &quot;posts&quot; 
+    label: &quot;Posts&quot; 
+    folder: &quot;posts/&quot; 
+    create: true 
+    slug: &quot;---&quot;
+    preview_path: &quot;posts/&quot; 
+    fields: # The fields for each document, usually in front matter`
+        - {label: &quot;Layout&quot;, name: &quot;layout&quot;, widget: &quot;hidden&quot;, default: &quot;layouts/post.njk&quot;}
+        - {label: &quot;Title&quot;, name: &quot;title&quot;, widget: &quot;string&quot;}
+        - {label: &quot;Description&quot;, name: &quot;description&quot;, widget: &quot;string&quot;}
+        - {label: &quot;Publish Date&quot;, name: &quot;date&quot;, widget: &quot;datetime&quot;}
+        - {label: &quot;Tags&quot;, name: &quot;tags&quot;, widget: &quot;string&quot;}
+        - {label: &quot;Body&quot;, name: &quot;body&quot;, widget: &quot;markdown&quot;}
+</code></pre>
+<p>The first collections option is <code>name</code>, which acts as the collection identifier and is used when referenced, such as the collection URL. So in this case the name is posts and the URL of this collections in the Netlify CMS is <code>admin/collections/posts</code>.</p>
+<p>Next is <code>label</code>, which is simply the name for the collection in admin user interface as shown below. If no value is given it defaults to the <code>name</code> value.</p>
+<p><img src="/img/posts/collection-ui-md.png" alt="Picture of the Netlify CMS editor UI" title="The Netlify CMS Editor User Interface"></p>
+<p>The <code>folder</code> option specifies the location of the collection items within the site structure relative to the root.</p>
+<p>The <code>create</code> option is a boolean value which determines whether a new item in this collection can be created. It is set to false by default.</p>
+<p>The <code>slug</code> option specifies a template for generating new filenames of the collection document type. A slug is a human readable, unique identifier and in the example below it specifies a template for generating new filenames based on a file's creation date and title field.</p>
+<p><code>slug: &quot;{{year}}-{{month}}-{{day}}-{{slug}}&quot;</code></p>
+<p>The first 3 template tags are for the date and the last tag <code>{{slug}}</code> is a url-safe version of the title field for the file. If the title of the post was &quot;My new post&quot; and it was posted on 21st February 2021, the <code>slug</code> option would output <code>2021-02-25-my-new-post.md</code> as the name of the new document.</p>
+<p>The <code>preview_path</code> option is a string denoting where the collection documents are found on the deployed site to allow a preview of the document. If it is not set, the &quot;View Preview&quot; button in the editor UI will take you to the root of the site. In this example <code>posts/{{slug}}</code> is the folder location of the collection, followed by the <code>{{slug}}</code> tag. In this case, the <code>{{slug}}</code> is the <strong>entire</strong> slug for the current entry defined in the <code>slug</code> option above, and not just the url-safe identifier.</p>
+<h2 id="fields">Fields <a class="direct-link" href="#fields">#</a></h2>
+<p>The <code>fields</code> option allows the definition of attribute fields that each correspond to a widget in the editor UI. Each of these attribute fields is nested in the fields option and placed within curly braces. In a nutshell, the <code>fields</code> option allows the user to build a template, and the field attributes in the <code>fields</code> option should be the same as the attributes in the front matter of the corresponding document type. Below is an image which shows the <code>config.yml</code> for the editor UI on the left, and a markdown file (a blog post) on the right.</p>
+<p><img src="/img/posts/vs-code-md.png" alt="Comparison of config and posts templates" title="Comparison of config and posts templates"></p>
+<p>Like the <code>collections</code> options, the <code>name</code> option is the field identifier, and the <code>label</code> option is the name for the field in the editor UI.</p>
+<p>The <code>widget</code> option determines the data type of the attribute field and the corresponding editor UI. Most of the data types are fairly self explanatory but there are a lot of options. The one that is perhaps less obvious is for the layout field.</p>
+<p><code>{label: &quot;Layout&quot;, name: &quot;layout&quot;, widget: &quot;hidden&quot;, default: &quot;layouts/post.njk&quot;}</code></p>
+<p>The widget option of <code>hidden</code>, hides it from view meaning it cannot be changed in the editor UI. The <code>default</code> option sets the default value of the field as the path to the template for the document, in this example <code>layouts/post.njk</code>. There are numerous options for fields and if you want to know more check out the widgets section of the Netlify CMS documentation <a href="https://www.netlifycms.org/docs/widgets">here</a>.</p>
+<p>The <code>required</code> option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.</p>
+<p>Body is a special field that needs to be included in documents that contain front matter. It must have <code>name:&quot;body&quot;</code> and represents the section of the document that contains the main content or body, similar to a HTML <code>&lt;body&gt;</code> tag.</p>
+<p><strong>Important!</strong> It is worth noting that order of the fields in your Netlify CMS <code>config.yml</code> file determines their order in the editor UI.</p>
+<h2 id="conclusion">Conclusion <a class="direct-link" href="#conclusion">#</a></h2>
+<p>I found going through the code, reading the docs and trying to understand what I had done a really useful exercise, and hopefully this can be useful to someone else too. You view my GitHub repository for the project <a href="https://github.com/robbailiff/eleventy-base-blog">here</a>, and the Netlify CMS documentation <a href="https://www.netlifycms.org/docs/configuration-options">here</a>.</p>
+<br>
+
+<hr>
+<ul><li>Previous: <a href="/posts/2021-02-27-has-the-problem-been-fixed-well-see/">Has the problem been fixed? We&#39;ll see!</a></li>
+</ul>
+
+    </main>
+
+    <footer class="footer my-3">
+      <div class="container">
+        <p class="text-center">&#169 2021 Rob's Blog</p>
+      </div>
+    </footer>
+
+    <!-- Current page: /posts/2021-02-27-how-to-configure-the-collections-in-netlify-cms-1/ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>

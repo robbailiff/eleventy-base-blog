@@ -1,0 +1,16 @@
+---
+layout: layouts/home.njk
+title: Comments
+templateClass: tmpl-post
+eleventyNavigation:
+  key: Comments
+  order: 5
+---
+
+{% for comment in collections.comments | reverse %}
+    <div>
+        <h4>{{ comment.data.comment }}</h4>
+        <p>Posted by {{ comment.data.author }} on {{ comment.data.publishDate }}</p>
+    </div>
+    <hr>
+{% endfor %}
