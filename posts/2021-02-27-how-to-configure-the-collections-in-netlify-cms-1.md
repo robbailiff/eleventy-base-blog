@@ -35,7 +35,7 @@ The first collections option is `name`, which acts as the collection identifier 
 
 Next is `label`, which is simply the name for the collection in admin user interface as shown below. If no value is given it defaults to the `name` value. 
 
-![Picture of the Netlify CMS editor UI](/img/posts/collection-ui-md.png "The Netlify CMS Editor User Interface")
+![Picture of the Netlify CMS editor UI](/img/posts/collection-ui.png "The Netlify CMS Editor User Interface")
 
 The `folder` option specifies the location of the collection items within the site structure relative to the root.
 
