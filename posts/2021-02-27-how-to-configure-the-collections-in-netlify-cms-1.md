@@ -65,3 +65,5 @@ There are numerous options for fields and if you want to know more check out the
 The `required` option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.
 
 **Important!** It is worth noting that order of the fields in your Netlify CMS `config.yml` file determines their order in the editor UI.
+
+## Conclusion
