@@ -4,7 +4,7 @@ backend:
 
 # This line should *not* be indented
 publish_mode: editorial_workflow
-media_folder: "images/uploads"
+media_folder: "img/posts"
 
 collections:
   - name: "posts" # Used in routes, e.g., /admin/collections/blog
