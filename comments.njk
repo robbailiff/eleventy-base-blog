@@ -7,7 +7,7 @@ eleventyNavigation:
   order: 5
 ---
 
-{% for comment in collections.comments | reverse %}
+{% for comment in collections.comments %}
     <div>
         <h4>{{ comment.data.comment }}</h4>
         <p>Posted by {{ comment.data.author }} on {{ comment.date | readableDate }}</p>
