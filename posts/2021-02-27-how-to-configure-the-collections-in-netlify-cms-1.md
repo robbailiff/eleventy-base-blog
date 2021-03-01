@@ -49,7 +49,7 @@ The `slug` option specifies a template for generating new filenames of the coll
 
 The first 3 template tags are for the date and the last tag {% raw %}`{{slug}}`{% endraw %} is a url-safe version of the title field for the file. If the title of the post was "My new post" and it was posted on 21st February 2021, the `slug` option would output `2021-02-25-my-new-post.md` as the name of the new document.
 
-The `preview_path` option is a string denoting where the collection documents are found on the deployed site to allow a preview of the document. If it is not set, the "View Preview" button in the editor UI will take you to the root of the site. In this example ```posts/{{slug}}``` is the folder location of the collection, followed by the {% raw %}```{{slug}}```{% endraw %} tag. In this case, the {% raw %}`{{slug}}`{% endraw %} is the **entire** slug for the current entry defined in the `slug` option above, and not just the url-safe identifier.
+The `preview_path` option is a string denoting where the collection documents are found on the deployed site to allow a preview of the document. If it is not set, the "View Preview" button in the editor UI will take you to the root of the site. In this example {% raw %}```posts/{{slug}}```{% endraw %} is the folder location of the collection, followed by the {% raw %}```{{slug}}```{% endraw %} tag. In this case, the {% raw %}`{{slug}}`{% endraw %} is the **entire** slug for the current entry defined in the `slug` option above, and not just the url-safe identifier.
 
 ## Fields
 
