@@ -51,7 +51,7 @@ The `preview_path` option is a string denoting where the collection documents ar
 
 ## Fields
 
-The `fields` option allows the definition of attribute fields that each correspond to a widget in the editor UI. Each of these attribute fields is nested in the fields option and placed within curly braces. In a nutshell, the `fields` option allows the user to build a template, and the field attributes in the `fields` option should be the same as the attributes in the frontmatter of the corresponding document type. Below is an image which shows the `config.yml` for the editor UI on the left, and a markdown file (a blog post) on the right.
+The `fields` option allows the definition of attribute fields that each correspond to a widget in the editor UI. Each of these attribute fields is nested in the fields option and placed within curly braces. In a nutshell, the `fields` option allows the user to build a template, and the field attributes in the `fields` option should be the same as the attributes in the front matter of the corresponding document type. Below is an image which shows the `config.yml` for the editor UI on the left, and a markdown file (a blog post) on the right.
 
 ![Comparison of config and posts templates](/img/posts/vs-code-md.png "Comparison of config and posts templates")
 
@@ -65,7 +65,7 @@ The widget option of `hidden`, hides it from view meaning it cannot be changed i
 
 The `required` option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.
 
-Body is a special field that needs to be included in documents that contain frontmatter. It must have a ```name: "body"``` and represents the section of the document that contains the main content or body, similar to a HTML `<body>` tag.
+Body is a special field that needs to be included in documents that contain front matter. It must have ```name: "body"``` and represents the section of the document that contains the main content or body, similar to a HTML `<body>` tag.
 
 **Important!** It is worth noting that order of the fields in your Netlify CMS `config.yml` file determines their order in the editor UI.
 
