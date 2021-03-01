@@ -42,12 +42,13 @@ The `folder` option specifies the location of the collection items within the si
 The `create` option is a boolean value which determines whether a new item in this collection can be created. It is set to false by default.
 
 The `slug` option specifies a template for generating new filenames of the collection document type. A slug is a human readable, unique identifier and in the example below it specifies a template for generating new filenames based on a file's creation date and title field.
+~~~~
+slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+~~~~
 
-`slug: "{{year}}-{{month}}-{{day}}-{{slug}}"`
+The first 3 template tags are for the date and the last tag ```{{slug}}``` is a url-safe version of the title field for the file. If the title of the post was "My new post" and it was posted on 21st February 2021, the `slug` option would output `2021-02-25-my-new-post.md` as the name of the new document.
 
-The first 3 template tags are for the date and the last tag `{{slug}}` is a url-safe version of the title field for the file. If the title of the post was "My new post" and it was posted on 21st February 2021, the `slug` option would output `2021-02-25-my-new-post.md` as the name of the new document.
-
-The `preview_path` option is a string denoting where the collection documents are found on the deployed site to allow a preview of the document. If it is not set, the "View Preview" button in the editor UI will take you to the root of the site. In this example `posts/{{slug}}` is the folder location of the collection, followed by the `{{slug}}` tag. In this case, the `{{slug}}` is the **entire** slug for the current entry defined in the `slug` option above, and not just the url-safe identifier.
+The `preview_path` option is a string denoting where the collection documents are found on the deployed site to allow a preview of the document. If it is not set, the "View Preview" button in the editor UI will take you to the root of the site. In this example `posts/{{slug}}` is the folder location of the collection, followed by the ```{{slug}}``` tag. In this case, the ```{{slug}}``` is the **entire** slug for the current entry defined in the `slug` option above, and not just the url-safe identifier.
 
 ## Fields
 
