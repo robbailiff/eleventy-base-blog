@@ -8,7 +8,7 @@ tags: Tutorial
 ---
 ## Introduction
 
-Using the Netlify CMS for the first time was very confusing. I didn't really know what I was doing and I basically just copied the code from the setup tutorial and hoped it work. In particular, I had no idea what it was actually doing or how to change the template in the CMS to match the pre-existing posts format. I think I finally got to the bottom of it after a bit of playing around and reading the docs.
+Using the Netlify CMS for the first time was very confusing. I didn't really know what I was doing and I basically just copied the code from the setup tutorial and hoped it work. In particular, I had no idea what it was actually doing or how to change the template in the CMS to match the pre-existing posts format. I think I finally got to the bottom of it after a bit of playing around and reading the Netlify CMS documentation [here](https://www.netlifycms.org/docs/configuration-options).
 
 ## Collections
 
