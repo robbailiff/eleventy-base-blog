@@ -61,9 +61,7 @@ The `widget` option determines the data type of the attribute field and the corr
 
 `{label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk"}`
 
-The widget option of `hidden`, hides it from view meaning it cannot be changed in the editor UI. The `default` option sets the default value of the field as the path to the template for the document, in this example `layouts/post.njk`.  
-
-There are numerous options for fields and if you want to know more check out the widgets section of the Netlify CMS documentation [here](https://www.netlifycms.org/docs/widgets).
+The widget option of `hidden`, hides it from view meaning it cannot be changed in the editor UI. The `default` option sets the default value of the field as the path to the template for the document, in this example `layouts/post.njk`. There are numerous options for fields and if you want to know more check out the widgets section of the Netlify CMS documentation [here](https://www.netlifycms.org/docs/widgets).
 
 The `required` option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.
 
