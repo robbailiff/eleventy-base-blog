@@ -6,11 +6,11 @@ description: A brief overview of how collections work and how to fix it for the
 date: 2021-02-27T20:28:50.162Z
 tags: Tutorial
 ---
-## Introduction ##
+## Introduction
 
 Using the Netlify CMS for the first time was very confusing. I didn't really know what I was doing and I basically just copied the code from the setup tutorial and hoped it work. In particular, I had no idea what it was actually doing or how to change the template in the CMS to match the pre-existing posts format. I think I finally got to the bottom of it after a bit of playing around and reading the docs.
 
-## Collections ##
+## Collections
 
 The content displayed in the CMS is defined in the `collections` field of the `config.yml` file. These collections are then displayed in the left sidebar of the Content page of the editor UI. This is what the `collections` setting in my `config.yml` looks like:
 
@@ -30,14 +30,11 @@ collections:
         - {label: "Body", name: "body", widget: "markdown"}
 ```
 
-
 The first collections option is `name`, which acts as the collection identifier and is used when referenced, such as the collection URL. So in this case the name is posts and the URL of this collections in the Netlify CMS is `admin/collections/posts`. 
 
 Next is `label`, which is simply the name for the collection in admin user interface as shown below. If no value is given it defaults to the `name` value. 
 
 ![Picture of the Netlify CMS editor UI](/images/uploads/collection-ui-sm.png "The Netlify CMS Editor User Interface")
-
-
 
 The `folder` option specifies the location of the collection items within the site structure relative to the root.
 
@@ -49,7 +46,7 @@ The `slug` option specifies a template for generating new filenames of the coll
 
 The first 3 template tags are for the date and the last tag `{{slug}}` is a url-safe version of the title field for the file. If the title of the post was "My new post" and it was posted on 21st February 2021, the slug option would output `2021-02-25-my-new-post.md` as the name of the new document.
 
-## Fields ##
+## Fields
 
 The `fields` option allows the definition of attribute fields that each correspond to a widget in the editor UI. Each of these attribute fields is nested in the fields option and placed within curly braces. In a nutshell, the `fields` option allows the user to build a template, and the field attributes in the `fields` option should be the same as the attributes in the front matter of the corresponding document type. Below is an image which shows the `config.yml` for the editor UI on the left, and a markdown file (a blog post) on the right.
 
@@ -57,9 +54,13 @@ The `fields` option allows the definition of attribute fields that each correspo
 
 Like the `collections` options, the `name` option is the field identifier, and the `label` option is the name for the field in the editor UI. 
 
-The `widget` option determines the data type of the attribute field and the corresponding editor UI. Most of the data types are fairly self explanatory but there are a lot of options. The one that is perhaps less obvious is for the layout field. The widget option of `hidden`, hides it from view meaning it cannot be changed in the editor UI. The `default` option sets the default value of the field as the path to the template for the document, here layouts/post.njk.  
+The `widget` option determines the data type of the attribute field and the corresponding editor UI. Most of the data types are fairly self explanatory but there are a lot of options. The one that is perhaps less obvious is for the layout field. 
 
-There are numerous options for fields and if you want to know more check out the Widgets section of the docs: <https://www.netlifycms.org/docs/widgets/>
+`{label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk"}`
+
+The widget option of `hidden`, hides it from view meaning it cannot be changed in the editor UI. The `default` option sets the default value of the field as the path to the template for the document, in this example `layouts/post.njk`.  
+
+There are numerous options for fields and if you want to know more check out the widgets section of the Netlify CMS documentation [here](https://www.netlifycms.org/docs/widgets).
 
 The `required` option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.
 
