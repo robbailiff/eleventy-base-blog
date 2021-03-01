@@ -72,3 +72,5 @@ Body is a special field that needs to be included in documents that contain fron
 ## Conclusion
 
 I found going through the code, reading the docs and trying to understand what I had done a really useful exercise, and hopefully this can be useful to someone else too. You view my GitHub repository for the project [here](https://github.com/robbailiff/eleventy-base-blog), and the Netlify CMS documentation [here](https://www.netlifycms.org/docs/configuration-options).
+
+<br>
