@@ -43,17 +43,15 @@ The `create` option is a boolean value which determines whether a new item in th
 
 The `slug` option specifies a template for generating new filenames of the collection document type. A slug is a human readable, unique identifier and in the example below it specifies a template for generating new filenames based on a file's creation date and title field.
 
-
 {% raw %}`slug: "{{year}}-{{month}}-{{day}}-{{slug}}"`{% endraw %}
-
 
 The first 3 template tags are for the date and the last tag {% raw %}`{{slug}}`{% endraw %} is a url-safe version of the title field for the file. If the title of the post was "My new post" and it was posted on 21st February 2021, the `slug` option would output `2021-02-25-my-new-post.md` as the name of the new document.
 
-The `preview_path` option is a string denoting where the collection documents are found on the deployed site to allow a preview of the document. If it is not set, the "View Preview" button in the editor UI will take you to the root of the site. In this example {% raw %}```posts/{{slug}}```{% endraw %} is the folder location of the collection, followed by the {% raw %}```{{slug}}```{% endraw %} tag. In this case, the {% raw %}`{{slug}}`{% endraw %} is the **entire** slug for the current entry defined in the `slug` option above, and not just the url-safe identifier.
+The `preview_path` option is a string denoting where the collection documents are found on the deployed site to allow a preview of the document. If it is not set, the "View Preview" button in the editor UI will take you to the root of the site. In this example {% raw %}`posts/{{slug}}`{% endraw %} is the folder location of the collection, followed by the {% raw %}`{{slug}}`{% endraw %} tag. In this case, the {% raw %}`{{slug}}`{% endraw %} is the **entire** slug for the current entry defined in the `slug` option above, and not just the url-safe identifier.
 
 ## Fields
 
-The `fields` option allows the definition of attribute fields that each correspond to a widget in the editor UI. Each of these attribute fields is nested in the fields option and placed within curly braces. In a nutshell, the `fields` option allows the user to build a template, and the field attributes in the `fields` option should be the same as the attributes in the front matter of the corresponding document type. Below is an image which shows the `config.yml` for the editor UI on the left, and a markdown file (a blog post) on the right.
+The `fields` option allows the definition of attribute fields that each correspond to a widget in the editor UI. Each of these attribute fields is nested in the fields option and placed within curly braces. In a nutshell, the `fields` option allows the user to build a template, and the field attributes in the `fields` option should be the same as the attributes in the frontmatter of the corresponding document type. Below is an image which shows the `config.yml` for the editor UI on the left, and a markdown file (a blog post) on the right.
 
 ![Comparison of config and posts templates](/img/posts/vs-code-md.png "Comparison of config and posts templates")
 
@@ -68,6 +66,8 @@ The widget option of `hidden`, hides it from view meaning it cannot be changed i
 There are numerous options for fields and if you want to know more check out the widgets section of the Netlify CMS documentation [here](https://www.netlifycms.org/docs/widgets).
 
 The `required` option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.
+
+Body is a special field that needs to be included in documents that contain frontmatter. It must have a ```name: "body"``` and represents the section of the document that contains the main content or body, similar to a HTML `<body>` tag.
 
 **Important!** It is worth noting that order of the fields in your Netlify CMS `config.yml` file determines their order in the editor UI.
 
