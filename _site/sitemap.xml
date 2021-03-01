@@ -57,12 +57,12 @@
   </url>
   
   <url>
-    <loc>https://example.com/tags/Tutorial/</loc>
+    <loc>https://example.com/tags/second-tag/</loc>
     <lastmod>2021-02-16</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/tags/second-tag/</loc>
+    <loc>https://example.com/tags/Tutorial/</loc>
     <lastmod>2021-02-16</lastmod>
   </url>
   
@@ -99,6 +99,11 @@
   <url>
     <loc>https://example.com/posts/2021-02-27-how-to-configure-the-collections-in-netlify-cms-1/</loc>
     <lastmod>2021-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/comments/2021-03-01-_bob_/</loc>
+    <lastmod>2021-03-01</lastmod>
   </url>
   
   <url>
