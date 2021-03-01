@@ -65,7 +65,7 @@ The widget option of `hidden`, hides it from view meaning it cannot be changed i
 
 The `required` option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.
 
-Body is a special field that needs to be included in documents that contain front matter. It must have ```name: "body"``` and represents the section of the document that contains the main content or body, similar to a HTML `<body>` tag.
+Body is a special field that needs to be included in documents that contain front matter. It must have `name: "body"` and represents the section of the document that contains the main content or body, similar to a HTML `<body>` tag.
 
 **Important!** It is worth noting that order of the fields in your Netlify CMS `config.yml` file determines their order in the editor UI.
 
