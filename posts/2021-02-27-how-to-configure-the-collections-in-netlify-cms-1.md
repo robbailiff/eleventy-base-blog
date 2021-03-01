@@ -70,3 +70,5 @@ The `required` option is a boolean value which is enabled as true by default, ma
 **Important!** It is worth noting that order of the fields in your Netlify CMS `config.yml` file determines their order in the editor UI.
 
 ## Conclusion
+
+I found going through the code, reading the docs and trying to understand what I had done a really useful exercise, and hopefully this can be useful to someone else too. You view my GitHub repository for the project [here](https://github.com/robbailiff/eleventy-base-blog), and the Netlify CMS documentation [here](https://www.netlifycms.org/docs/configuration-options).
