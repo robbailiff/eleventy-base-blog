@@ -50,7 +50,7 @@ The first 3 template tags are for the date and the last tag `{{slug}}` is a url-
 
 
 
-The fields option allows the definition of  attribute fields that each correspond to a widget in the editor UI. Each of these attribute fields is nested in the fields option and placed within curly braces. It essentially allows the user the build a template, like that in front-matter of the posts templates.
+The `fields` option allows the definition of  attribute fields that each correspond to a widget in the editor UI. Each of these attribute fields is nested in the fields option and placed within curly braces. It essentially allows the user the build a template, like that in front-matter of the posts templates.
 
 
 
@@ -62,10 +62,10 @@ Like the collections options, the name is the field identifier, and the label is
 
 
 
-The widget option determines the data type of the attribute field and the corresponding editor UI. Most of the data types are fairly self explanatory but there are a lot of options. The one that is perhaps less obvious is for the layout field. The widget option of hidden, hides it from view meaning it cannot be changed in the editor UI. The default option sets the default value of the field as the path to the template for the document, here layouts/post.njk.  If you want to know more check out the Widgets section of the docs: <https://www.netlifycms.org/docs/widgets/>
+The `widget` option determines the data type of the attribute field and the corresponding editor UI. Most of the data types are fairly self explanatory but there are a lot of options. The one that is perhaps less obvious is for the layout field. The widget option of hidden, hides it from view meaning it cannot be changed in the editor UI. The default option sets the default value of the field as the path to the template for the document, here layouts/post.njk.  If you want to know more check out the Widgets section of the docs: <https://www.netlifycms.org/docs/widgets/>
 
-The required option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.
+The `required` option is a boolean value which is enabled as true by default, making all fields required. It must be set as false to make a field optional.
 
 
 
-It is worth noting that order of the fields in your Netlify CMS config.yml file determines their order in the editor UI.
+It is worth noting that order of the fields in your Netlify CMS `config.yml` file determines their order in the editor UI.
