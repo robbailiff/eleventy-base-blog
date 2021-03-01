@@ -10,7 +10,7 @@ eleventyNavigation:
 {% for comment in collections.comments | reverse %}
     <div>
         <h4>{{ comment.data.comment }}</h4>
-        <p>Posted by {{ comment.data.author }} on {{ comment.date }}</p>
+        <p>Posted by {{ comment.data.author }} on {{ comment.date | readableDate }}</p>
     </div>
     <hr>
 {% endfor %}
